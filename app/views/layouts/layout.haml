@@ -1,0 +1,18 @@
+!!!
+%html(lang="en")
+	%head
+		%meta(chatset="utf-8")
+		%title
+			=render_partial :title
+		%script(src="/js/jquery.js")
+		%script(src="/js/bootstrap.min.js")
+		%link(rel="stylesheet" href="/css/bootstrap.min.css")
+		%link(rel="stylesheet" href="/css/style.css")
+	%body
+		#wrap
+			.container
+				.row
+					=yield
+		#footer.navbar-bottom.navbar
+			.container
+				%p.text-muted This is a footer -- Put something here
