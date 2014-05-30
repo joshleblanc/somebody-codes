@@ -4,10 +4,41 @@
 		%meta(chatset="utf-8")
 		%title
 			=render_partial :title
-		%script(src="/js/jquery.js")
-		%script(src="/js/bootstrap.min.js")
+		=js "jquery"
+		=js "bootstrap.min"
+		=js "syntaxhighlighter"
+		=js "applescript"
+		=js "as3"
+		=js "bash"
+		=js "coldfusion"
+		=js "cpp"
+		=js "csharp"
+		=js "css"
+		=js "delphi"
+		=js "diff"
+		=js "erlang"
+		=js "groovy"
+		=js "haxe"
+		=js "java"
+		=js "javafx"
+		=js "jscript"
+		=js "perl"
+		=js "php"
+		=js "plain"
+		=js "powershell"
+		=js "python"
+		=js "ruby"
+		=js "sass"
+		=js "scala"
+		=js "sql"
+		=js "tap"
+		=js "typescript"
+		=js "vb"
+		=js "xml"
 		%link(rel="stylesheet" href="/css/bootstrap.min.css")
 		%link(rel="stylesheet" href="/css/style.css")
+		%link(rel="stylesheet" href="/css/default.css")
+		=all_javascript
 	%body
 		#wrap
 			.container

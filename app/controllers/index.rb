@@ -1,9 +1,7 @@
 get '/' do
-  content_type :json
-  gist = get_random_gist
-  user = User.all(gist_id: gist.id)
-  p gist, user
-  print gist.content
-  gist.content
-  #haml :index
+
+  @gist = get_random_gist
+  @user = User.all(gist_id: @gist.id).first
+  p @user
+  haml :index
 end
