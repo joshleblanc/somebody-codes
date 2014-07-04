@@ -1,0 +1,18 @@
+.container
+	%h1 Somebody Codes
+	%p Every minute of every day, someone's churning out code. Whether it's for work, pleasure, or learning.
+	%p Haven't you ever wanted to take a peek?
+
+	.row-fluid
+		.span4
+			%p.lead Gists/pastebin
+			%pre.prettyprint.home-code
+				=@gists[0].content
+			%pre.prettyprint.home-code
+				=@gists[1].content
+			%pre.prettyprint.home-code
+				=@gists[2].content
+		.span4
+			%p.lead Stackoverflow
+		.span4
+			%p.lead Git repos
