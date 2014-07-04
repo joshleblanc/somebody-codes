@@ -1,5 +1,9 @@
 helpers do
-  def js(s)
-    "<script type='text/javascript' src=/js/#{s}.js></script"
+  def js(*s)
+	string = ''
+	s.each do |i|
+    	string << "<script type='text/javascript' src=/js/#{i}.js></script>"
+	end
+	string
   end
 end

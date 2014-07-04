@@ -8,6 +8,7 @@ require 'octokit'
 require 'pp'
 require 'open-uri'
 require 'stringio'
+require 'rack'
 
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/data.db")
 

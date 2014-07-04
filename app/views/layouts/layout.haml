@@ -2,48 +2,34 @@
 %html(lang="en")
 	%head
 		%meta(chatset="utf-8")
+		%meta(content="width=device-width, initial-scale=1.0" name="viewport")
 		%title
 			=render_partial :title
-		=js "jquery"
-		=js "bootstrap.min"
-		=js "syntaxhighlighter"
-		=js "applescript"
-		=js "as3"
-		=js "bash"
-		=js "coldfusion"
-		=js "cpp"
-		=js "csharp"
-		=js "css"
-		=js "delphi"
-		=js "diff"
-		=js "erlang"
-		=js "groovy"
-		=js "haxe"
-		=js "java"
-		=js "javafx"
-		=js "jscript"
-		=js "perl"
-		=js "php"
-		=js "plain"
-		=js "powershell"
-		=js "python"
-		=js "ruby"
-		=js "sass"
-		=js "scala"
-		=js "sql"
-		=js "tap"
-		=js "typescript"
-		=js "vb"
-		=js "xml"
-		%link(rel="stylesheet" href="/css/bootstrap.min.css")
+		=js :jquery, "bootstrap-386", :html5shiv, :script
+		%script(src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert" type="text/javascript")
+		%link(rel="stylesheet" href="/css/bootstrap.css")
+		%link(rel="stylesheet" href="/css/bootstrap-responsive.css")
+		%link(rel="stylesheet" href="/css/docs.css")
 		%link(rel="stylesheet" href="/css/style.css")
-		%link(rel="stylesheet" href="/css/default.css")
-		=all_javascript
-	%body
+	%body(data-target=".bs-docs-sidebar" data-spy="scroll" data-twttr-rendered="true")
 		#wrap
-			.container
-				.row
-					=yield
-		#footer.navbar-bottom.navbar
+			.navbar.navbar-inverse.navbar-fixed-top
+				.navbar-inner
+					.container
+						%button.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse" type="button")
+							%span.icon-bar
+							%span.icon-bar
+							%span.icon-bar
+						%a.brand(href="./index") Somebody Codes
+						.nav-collapse.collapse(style="height: 0")
+							%ul.nav
+								%li.active
+									%a(href="./index/") Home
+			.jumbotron.masthead
+				.container
+					%h1 Somebody Codes
+					%p A note, an idea, a life's work...
+			=yield
+		#footer
 			.container
 				%p.text-muted This is a footer -- Put something here
