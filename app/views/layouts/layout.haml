@@ -5,20 +5,21 @@
 		%meta(content="width=device-width, initial-scale=1.0" name="viewport")
 		%title
 			=render_partial :title
-		=js :jquery, "bootstrap-386", :html5shiv, :script, :prettify
 		/*%script(src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?skin=desert" type="text/javascript")*/
+		%link(rel="stylesheet" href="/css/docs.css")
 		%link(rel="stylesheet" href="/css/bootstrap.css")
 		%link(rel="stylesheet" href="/css/bootstrap-responsive.css")
-		%link(rel="stylesheet" href="/css/docs.css")
 		%link(rel="stylesheet" href="/css/prettify.css")
 		%link(rel="stylesheet" href="/css/desert.css")
 		%link(rel="stylesheet" href="/css/style.css")
+		=js :jquery, "bootstrap-386", :html5shiv, :script, :prettify
+
 
 	%body(onload="prettyPrint()")
-		#wrap
-			.navbar.navbar-inverse.navbar-fixed-top
-				.navbar-inner
-					.container
+		.container
+			#wrap
+				.navbar.navbar-inverse.navbar-fixed-top
+					.navbar-inner
 						%button.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse" type="button")
 							%span.icon-bar
 							%span.icon-bar
@@ -26,18 +27,20 @@
 						%a.brand(href="./index") Somebody Codes
 						.nav-collapse.collapse(style="height: 0")
 							%ul.nav
-								%li.active
+								%li(class="#{if is_at :home then 'active' end}")
 									%a(href="/home") Home
-								%li
+								%li(class="#{if is_at :code then 'active' end}")
 									%a(href="/random") Random
-								%li
+								%li(class="#{if is_at :about then 'active' end}")
 									%a(href="/about") About
-			.jumbotron.masthead
-				.container
-					%h1 Somebody Codes
-					%p
-						%small Hey, listen! Try clicking the random button to explore!
-			=yield
-		#footer
-			.container
-				%p.text-muted This is a footer -- Put something here
+								%li(class="#{if is_at :submit then 'active' end}")
+									%a(href="/submit") Submit
+				.jumbotron.masthead
+					.row-fluid
+						%h1 Somebody Codes
+						%p
+							%small Hey, listen! Try clicking the random button to explore!
+				=yield
+			#footer
+				.row
+					%h4 2014 Joshua LeBlanc

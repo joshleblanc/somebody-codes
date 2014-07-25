@@ -1,0 +1,9 @@
+.comment
+	.span7
+		%h4 #{@name}
+	.span5
+		%small.date(title="#{@date}") #{@date.to_date}
+	.span12
+		%pre
+			:preserve
+				#{h @comment}

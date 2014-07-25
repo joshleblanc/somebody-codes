@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/base'
 require 'sinatra/static_assets'
 require 'sinatra/cookies'
 require 'haml'
@@ -10,26 +11,26 @@ require 'open-uri'
 require 'stringio'
 require 'rack'
 
-DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/data.db")
+module Site
+	class App < Sinatra::Application
+		DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/db/data.db")
 
-configure do
-	set :views, ['app/views/layouts', 'app/views/pages', 'app/views/partials']
-	set :root, File.dirname(__FILE__)
-	set :session_secret, "thisstringwillnotchange"
-	set :protection, except: :session_hijacking
-	enable :run
-	enable :static
-	enable :sessions
+		Dir["./app/helpers/*.rb"].each { |file| require file }
+		Dir["./app/models/*.rb"].each { |file| require file }
+		Dir["./app/controllers/*.rb"].each { |file| require file }
+
+		helpers Site::Helpers
+
+		use Routes::Home
+		use Routes::About
+		use Routes::Code
+		use Routes::Index
+		use Routes::List
+		use Routes::Random
+		use Routes::Submit
+
+		DataMapper.auto_upgrade!
+		DataMapper.finalize
+	end
+
 end
-
-Octokit.configure do |c|
-  c.netrc = true
-  #c.auto_paginate = true
-end
-
-Dir["./app/models/*.rb"].each { |file| require file }
-Dir["./app/helpers/*.rb"].each { |file| require file }
-Dir["./app/controllers/*.rb"].each { |file| require file }
-
-DataMapper.auto_upgrade!
-DataMapper.finalize

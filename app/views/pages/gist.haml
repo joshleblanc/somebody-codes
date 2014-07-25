@@ -1,44 +1,19 @@
-.container
-	%p.lead
-		#{@gist.description}
-.container
-	.row-fluid
-		.span3
-			%p.lead This peice of code was created by #{@user.name}
-			%a.btn.btn-primary.btn-large(href="#{@user.full_address}") Go to #{@user.name}'s profile
+.row-fluid
+	.span9.offset3
+		Description:
 
-			.comments
-				%legend Comments
-
-				%form(method="post")
-					%fieldset
-						%label Name
-						%input(type="text" name="name" placeholder="Enter your name" required)
-						%label Comment
-						%textarea#commentBox(name="comment" placeholder="enter your comment" required)
-						.span12
-							.span7
-								%button.btn(type="submit") Submit
-							.span5
-								%small#text-remaining 100
-
-				.comment-list
-					-@comments.each do |i|
-						.comment
-							.span8
-								%h4 #{i.name}
-							.span3
-								%small.date(title="#{i.created_at}") #{i.created_at.to_date}
-							.span12
-								%pre
-									:preserve
-										#{h i.comment}
-
-
-
-		.span9
-			%a(href="#{@gist.full_address}")
-				.page-header #{@gist.file_name}
-			%pre.prettyprint
-				:preserve
-					#{h "#{@gist.content}"}
+.row-fluid
+	.span3
+		%a.btn.btn-primary.btn-large(href="#{@user.full_address}") Go to #{@user.name}'s profile
+		.comments
+			=render_partial :comment_form
+			.comment-list
+				-@comments.each do |i|
+					=render_comment i
+	.span9
+		%p.lead #{@gist.description}
+		%a(href="#{@gist.full_address}")
+			.page-header #{@gist.file_name}
+		%pre.prettyprint
+			:preserve
+				#{h "#{@gist.content}"}

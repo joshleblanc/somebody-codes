@@ -28,6 +28,7 @@ end
 
 namespace :get do
   task :gist do
+	  require './main.rb'
     require 'json'
     CLIENT = Octokit::Client.new
     gists =  CLIENT.public_gists

@@ -1,0 +1,12 @@
+%form(method="post")
+	%fieldset
+		%legend Comments
+		%label Name
+		%input(type="text" name="name" placeholder="Enter your name" required)
+		%label Comment
+		%textarea#commentBox(name="comment" placeholder="enter your comment" required)
+		.span12
+			.span7
+				%button.btn(type="submit") Submit
+			.span5
+				%small#text-remaining 100
